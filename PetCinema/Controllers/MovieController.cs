@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace PetCinema.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class MovieController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -24,6 +24,7 @@ namespace PetCinema.Controllers
             _mapper = mapper;
         }
         [HttpGet]
+        [Route("getmovies")]
         public async Task<ActionResult<IEnumerable<IndexMovieViewModel>>> GetMovies()
         {
             IEnumerable<IndexMovieDTO> movieDTOs = await _movieService.GetMovies();

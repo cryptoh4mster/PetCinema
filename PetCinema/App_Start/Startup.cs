@@ -40,7 +40,6 @@ namespace PetCinema
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PetCinema", Version = "v1" });
             });
-            
             services.AddTransient<IMovieRepository, MovieRepository>();
             services.AddTransient<IMovieService, MovieService>();
             services.AddControllers();
@@ -56,6 +55,8 @@ namespace PetCinema
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PetCinema v1"));
             }
 
+            app.UseCors(builder => builder.WithOrigins("http://127.0.0.1:5500"));
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -64,6 +65,7 @@ namespace PetCinema
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
                 endpoints.MapControllers();
             });
         }
