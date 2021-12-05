@@ -12,7 +12,7 @@ namespace PetCinemaDAL.EF
         public PetCinemaContext(DbContextOptions<PetCinemaContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
     }
 }

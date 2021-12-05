@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PetCinemaDAL.Migrations
 {
-    public partial class AddedMovieTable : Migration
+    public partial class AddedMoviesTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

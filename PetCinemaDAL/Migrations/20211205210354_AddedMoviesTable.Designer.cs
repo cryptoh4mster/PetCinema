@@ -10,8 +10,8 @@ using PetCinemaDAL.EF;
 namespace PetCinemaDAL.Migrations
 {
     [DbContext(typeof(PetCinemaContext))]
-    [Migration("20211205190930_AddedMovieTable")]
-    partial class AddedMovieTable
+    [Migration("20211205210354_AddedMoviesTable")]
+    partial class AddedMoviesTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
