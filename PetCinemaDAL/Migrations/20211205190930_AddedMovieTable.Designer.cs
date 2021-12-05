@@ -10,8 +10,8 @@ using PetCinemaDAL.EF;
 namespace PetCinemaDAL.Migrations
 {
     [DbContext(typeof(PetCinemaContext))]
-    [Migration("20211201181406_MoviesMigration")]
-    partial class MoviesMigration
+    [Migration("20211205190930_AddedMovieTable")]
+    partial class AddedMovieTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,11 +30,20 @@ namespace PetCinemaDAL.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Genre")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Rating")
+                        .HasColumnType("real");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
