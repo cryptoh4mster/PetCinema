@@ -9,6 +9,7 @@ namespace PetCinemaDAL.EF
     public class PetCinemaContext : DbContext
     {
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Serial> Serials { get; set; }
         public PetCinemaContext(DbContextOptions<PetCinemaContext> options)
             : base(options)
         {
