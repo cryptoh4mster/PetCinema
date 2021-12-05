@@ -57,6 +57,8 @@ namespace PetCinema
 
             app.UseCors(builder => builder.WithOrigins("http://127.0.0.1:5500"));
 
+            //app.UseCors(builder => builder.AllowAnyOrigin());
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -65,7 +67,6 @@ namespace PetCinema
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
                 endpoints.MapControllers();
             });
         }

@@ -31,16 +31,20 @@ namespace PetCinemaPL.Mappings
                     .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image));
             CreateMap<IndexMovieViewModel, IndexMovieDTO>()
                     .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description));
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image));
             CreateMap<IndexMovieDTO, IndexMovieViewModel>()
                     .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description));
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image));
             CreateMap<IndexMovieDTO, Movie>()
                     .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description));
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image));
             CreateMap<Movie, IndexMovieDTO>()
                     .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description));
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image)); 
         }
     }
 }

@@ -26,7 +26,7 @@ namespace PetCinemaBLL.Services
             return MovieDTOs;
         }
 
-        public async Task<CreateMovieDTO> AddMovie(CreateMovieDTO movieDTO)
+        public async Task<CreateMovieDTO> AddMovie(CreateMovieDTO movieDTO) 
         {
             Movie movie = _mapper.Map<Movie>(movieDTO);  
             Movie movieForMapping = await _movieRepository.AddMovie(movie);
