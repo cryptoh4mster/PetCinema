@@ -42,6 +42,8 @@ namespace PetCinema
             });
             services.AddTransient<IMovieRepository, MovieRepository>();
             services.AddTransient<IMovieService, MovieService>();
+            services.AddTransient<ISerialRepository, SerialRepository>();
+            services.AddTransient<ISerialService, SerialService>();
             services.AddControllers();
         }
 
