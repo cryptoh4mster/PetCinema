@@ -31,7 +31,7 @@ namespace AspNetCoreIdentityBLL.Services
         {
             User user = await _userManager.FindByEmailAsync(userDTO.Email);
 
-            if (user==null)
+            if (user == null)
             {
                 user = _mapper.Map<User>(userDTO);
                 var result = await _userManager.CreateAsync(user, userDTO.Password);

@@ -33,5 +33,11 @@ namespace PetCinemaBLL.Services
             Serial serialForMapping = await _serialRepository.AddSerial(serial);
             return _mapper.Map<CreateSerialDTO>(serialForMapping);
         }
+        public async Task<IEnumerable<IndexSerialDTO>> GetTopSerialsByRating()
+        {
+            IEnumerable<Serial> Serials = await _serialRepository.GetSerials();
+            IEnumerable<IndexSerialDTO> SerialDTOs = _mapper.Map<IEnumerable<IndexSerialDTO>>(Serials);
+            return SerialDTOs;
+        }
     }
 }

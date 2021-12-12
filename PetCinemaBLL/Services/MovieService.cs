@@ -32,5 +32,12 @@ namespace PetCinemaBLL.Services
             Movie movieForMapping = await _movieRepository.AddMovie(movie);
             return _mapper.Map<CreateMovieDTO>(movieForMapping);
         }
+
+        public async Task<IEnumerable<IndexMovieDTO>> GetTopMoviesByRating()
+        {
+            IEnumerable<Movie> Movies = await _movieRepository.GetMovies();
+            IEnumerable<IndexMovieDTO> MovieDTOs = _mapper.Map<IEnumerable<IndexMovieDTO>>(Movies);
+            return MovieDTOs;
+        }
     }
 }

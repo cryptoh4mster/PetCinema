@@ -27,5 +27,14 @@ namespace PetCinemaDAL.Repositories
             await _context.SaveChangesAsync();
             return serial;
         }
+
+        public async Task<IEnumerable<Serial>> GetTopSerialsByRating()
+        {
+            IEnumerable<Serial> serials = await _context.Serials.ToListAsync();
+            var top10 = (from serial in serials
+                         orderby serial.Rating
+                         select serial).Take(10);
+            return top10;
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace PetCinemaBLL.Interfaces
     {
         Task<IEnumerable<IndexSerialDTO>> GetSerials();
         Task<CreateSerialDTO> AddSerial(CreateSerialDTO serialDTO);
+        Task<IEnumerable<IndexSerialDTO>> GetTopSerialsByRating();
     }
 }
