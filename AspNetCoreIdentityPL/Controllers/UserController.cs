@@ -28,12 +28,12 @@ namespace AspNetCoreIdentityPL.Controllers
             _userService = userService;
         }
         [HttpPost]
-        public async Task<ActionResult<CreateUserViewModel>> Register(CreateUserViewModel userViewModel)
+        public async Task<ActionResult> Register(CreateUserViewModel userViewModel)
         {
             CreateUserDTO createUserDTO = _mapper.Map<CreateUserDTO>(userViewModel);
             // добавляем пользователя
             OperationDetails operationDetails = await _userService.AddUser(createUserDTO);
-
+            return Ok(operationDetails);
         }
     }
 }

@@ -15,8 +15,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using AspNetCoreIdentityDAL.EF;
 using AspNetCoreIdentityDAL.Entities;
-using AspNetCoreIdentityDAL.Repositories;
-using AspNetCoreIdentityDAL.Interfaces;
 using AspNetCoreIdentityBLL.Interfaces;
 using AspNetCoreIdentityBLL.Services;
 using AspNetCoreIdentityPL.Mappings;
