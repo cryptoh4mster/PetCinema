@@ -15,6 +15,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using AspNetCoreIdentityDAL.EF;
 using AspNetCoreIdentityDAL.Entities;
+using AspNetCoreIdentityDAL.Repositories;
+using AspNetCoreIdentityDAL.Interfaces;
+using AspNetCoreIdentityBLL.Interfaces;
+using AspNetCoreIdentityBLL.Services;
+using AspNetCoreIdentityPL.Mappings;
 
 namespace AspNetCoreIdentityPL
 {
@@ -36,6 +41,9 @@ namespace AspNetCoreIdentityPL
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityContext>();
 
+            services.AddAutoMapper(typeof(MappingsProfile));
+
+            services.AddTransient<IUserService, UserService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
