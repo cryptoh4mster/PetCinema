@@ -15,10 +15,17 @@ namespace AspNetCoreIdentityPL.Mappings
         {
             CreateMap<CreateUserViewModel, CreateUserDTO>()
                     .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                    .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
                     .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
                     .ForMember(dest => dest.PasswordConfirm, opt => opt.MapFrom(src => src.PasswordConfirm));
             CreateMap<CreateUserDTO, User>()
-                    .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
+                    .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                    .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName));
+            CreateMap<LoginUserViewModel, LoginUserDTO>()
+                    .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                    .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
+                    .ForMember(dest => dest.RememberMe, opt => opt.MapFrom(src => src.RememberMe));
+
         }     
     }
 }

@@ -9,6 +9,8 @@ namespace AspNetCoreIdentityBLL.Interfaces
 {
     public interface IUserService
     {
-        Task<OperationDetails> AddUser(CreateUserDTO userDTO);
+        Task<OperationDetails> AddUser(CreateUserDTO createUserDTO);
+        Task<OperationDetails> Login(LoginUserDTO loginUserDTO);
+        Task<OperationDetails> Logout();
     }
 }
