@@ -10,5 +10,6 @@ namespace PetCinemaDAL.Interfaces
     {
         Task<IEnumerable<Movie>> GetMovies();
         Task<Movie> AddMovie(Movie movie);
+        Task<IEnumerable<Movie>> GetTopMoviesByRating();
     }
 }

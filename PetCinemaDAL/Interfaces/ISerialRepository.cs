@@ -11,5 +11,6 @@ namespace PetCinemaDAL.Interfaces
     {
         Task<IEnumerable<Serial>> GetSerials();
         Task<Serial> AddSerial(Serial serial);
+        Task<IEnumerable<Serial>> GetTopSerialsByRating();
     }
 }

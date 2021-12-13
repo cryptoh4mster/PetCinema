@@ -11,5 +11,6 @@ namespace PetCinemaBLL.Interfaces
     {
         Task<IEnumerable<IndexMovieDTO>> GetMovies();
         Task<CreateMovieDTO> AddMovie(CreateMovieDTO movieDTO);
+        Task<IEnumerable<IndexMovieDTO>> GetTopMoviesByRating();
     }
 }

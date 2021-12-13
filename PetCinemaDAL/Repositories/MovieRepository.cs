@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using PetCinemaDAL.EF;
 using PetCinemaDAL.Entities;
 using PetCinemaDAL.Interfaces;
+using System.Linq;
 
 namespace PetCinemaDAL.Repositories
 {
@@ -25,6 +26,15 @@ namespace PetCinemaDAL.Repositories
             await _context.Movies.AddAsync(movie);
             await _context.SaveChangesAsync();
             return movie;
+        }
+
+        public async Task<IEnumerable<Movie>> GetTopMoviesByRating()
+        {
+            IEnumerable<Movie> movies = await _context.Movies.ToListAsync();
+            var top10 = (from movie in movies
+                         orderby movie.Rating
+                         select movie).Take(10);
+            return top10;
         }
     }
 }

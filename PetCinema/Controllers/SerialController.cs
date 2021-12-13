@@ -36,5 +36,13 @@ namespace PetCinemaPL.Controllers
             CreateSerialDTO serialDTO = _mapper.Map<CreateSerialDTO>(serialViewModel);
             return Ok(await _serialService.AddSerial(serialDTO));
         }
+        [HttpGet]
+        [Route("bestrating")]
+        public async Task<ActionResult<IEnumerable<IndexMovieViewModel>>> GetTopMoviesByRating()
+        {
+            IEnumerable<IndexSerialDTO> serialDTOs = await _serialService.GetSerials();
+            IEnumerable<IndexSerialViewModel> serialViewModels = _mapper.Map<IEnumerable<IndexSerialViewModel>>(serialDTOs);
+            return Ok(serialViewModels);
+        }
     }
 }

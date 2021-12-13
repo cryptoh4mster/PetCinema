@@ -37,5 +37,14 @@ namespace PetCinema.Controllers
             CreateMovieDTO movieDTO = _mapper.Map<CreateMovieDTO>(movieViewModel);
             return Ok(await _movieService.AddMovie(movieDTO));
         }
+
+        [HttpGet]
+        [Route("bestrating")]
+        public async Task<ActionResult<IEnumerable<IndexMovieViewModel>>> GetTopMoviesByRating()
+        {
+            IEnumerable<IndexMovieDTO> movieDTOs = await _movieService.GetMovies();
+            IEnumerable<IndexMovieViewModel> movieViewModels = _mapper.Map<IEnumerable<IndexMovieViewModel>>(movieDTOs);
+            return Ok(movieViewModels);
+        }
     }
 }
