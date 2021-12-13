@@ -59,7 +59,6 @@ namespace AspNetCoreIdentityPL
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AspNetCoreIdentityPL v1"));
             }
-
             app.UseHttpsRedirection();
 
             app.UseRouting();

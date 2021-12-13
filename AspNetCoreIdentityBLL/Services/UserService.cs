@@ -27,14 +27,14 @@ namespace AspNetCoreIdentityBLL.Services
             _context = context;
             _signInManager = signInManager;
         }
-        public async Task<OperationDetails> AddUser(CreateUserDTO userDTO)
+        public async Task<OperationDetails> AddUser(CreateUserDTO createUserDTO)
         {
-            User user = await _userManager.FindByEmailAsync(userDTO.Email);
+            User user = await _userManager.FindByEmailAsync(createUserDTO.Email);
 
             if (user == null)
             {
-                user = _mapper.Map<User>(userDTO);
-                var result = await _userManager.CreateAsync(user, userDTO.Password);
+                user = _mapper.Map<User>(createUserDTO);
+                var result = await _userManager.CreateAsync(user, createUserDTO.Password);
                 if (result.Errors.Count() > 0)
                     return new OperationDetails(false, result.Errors.First().Description, "");
                 await _context.SaveChangesAsync();
@@ -46,6 +46,21 @@ namespace AspNetCoreIdentityBLL.Services
             {
                 return new OperationDetails(false, "Пользователь с таким Email уже существует", "Email");
             }
+        }
+
+        public async Task<OperationDetails> Login(LoginUserDTO loginUserDTO)
+        {
+            var result = await _signInManager.PasswordSignInAsync(loginUserDTO.Email, loginUserDTO.Password, loginUserDTO.RememberMe, false);
+            if (result.Succeeded)
+                return new OperationDetails(true, "Вы успешно залогинились", "");
+            else
+                return new OperationDetails(false, "Неправильный логин и(или) пароль", "");
+        }
+
+        public async Task<OperationDetails> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return new OperationDetails(true, "Вы успешно разлогинились", "");
         }
     }
 }
