@@ -42,7 +42,7 @@ namespace PetCinema.Controllers
         [Route("bestrating")]
         public async Task<ActionResult<IEnumerable<IndexMovieViewModel>>> GetTopMoviesByRating()
         {
-            IEnumerable<IndexMovieDTO> movieDTOs = await _movieService.GetMovies();
+            IEnumerable<IndexMovieDTO> movieDTOs = await _movieService.GetTopMoviesByRating();
             IEnumerable<IndexMovieViewModel> movieViewModels = _mapper.Map<IEnumerable<IndexMovieViewModel>>(movieDTOs);
             return Ok(movieViewModels);
         }

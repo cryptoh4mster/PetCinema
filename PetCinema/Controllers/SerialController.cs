@@ -38,9 +38,9 @@ namespace PetCinemaPL.Controllers
         }
         [HttpGet]
         [Route("bestrating")]
-        public async Task<ActionResult<IEnumerable<IndexMovieViewModel>>> GetTopMoviesByRating()
+        public async Task<ActionResult<IEnumerable<IndexMovieViewModel>>> GetTopSerialsByRating()
         {
-            IEnumerable<IndexSerialDTO> serialDTOs = await _serialService.GetSerials();
+            IEnumerable<IndexSerialDTO> serialDTOs = await _serialService.GetTopSerialsByRating();
             IEnumerable<IndexSerialViewModel> serialViewModels = _mapper.Map<IEnumerable<IndexSerialViewModel>>(serialDTOs);
             return Ok(serialViewModels);
         }

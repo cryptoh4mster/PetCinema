@@ -32,7 +32,7 @@ namespace PetCinemaDAL.Repositories
         {
             IEnumerable<Movie> movies = await _context.Movies.ToListAsync();
             var top10 = (from movie in movies
-                         orderby movie.Rating
+                         orderby movie.Rating descending
                          select movie).Take(10);
             return top10;
         }

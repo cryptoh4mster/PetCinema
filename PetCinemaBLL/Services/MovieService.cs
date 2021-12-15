@@ -35,7 +35,7 @@ namespace PetCinemaBLL.Services
 
         public async Task<IEnumerable<IndexMovieDTO>> GetTopMoviesByRating()
         {
-            IEnumerable<Movie> Movies = await _movieRepository.GetMovies();
+            IEnumerable<Movie> Movies = await _movieRepository.GetTopMoviesByRating();
             IEnumerable<IndexMovieDTO> MovieDTOs = _mapper.Map<IEnumerable<IndexMovieDTO>>(Movies);
             return MovieDTOs;
         }

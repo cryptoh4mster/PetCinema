@@ -35,7 +35,7 @@ namespace PetCinemaBLL.Services
         }
         public async Task<IEnumerable<IndexSerialDTO>> GetTopSerialsByRating()
         {
-            IEnumerable<Serial> Serials = await _serialRepository.GetSerials();
+            IEnumerable<Serial> Serials = await _serialRepository.GetTopSerialsByRating();
             IEnumerable<IndexSerialDTO> SerialDTOs = _mapper.Map<IEnumerable<IndexSerialDTO>>(Serials);
             return SerialDTOs;
         }
