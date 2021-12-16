@@ -22,7 +22,7 @@ namespace PetCinemaBLL.Services
         }
         public async Task<IEnumerable<IndexSerialDTO>> GetSerials()
         {
-            IEnumerable<Serial> Serials = await _serialRepository.GetSerials();
+            IEnumerable<Serial> Serials = await _serialRepository.GetAll();
             IEnumerable<IndexSerialDTO> SerialDTOs = _mapper.Map<IEnumerable<IndexSerialDTO>>(Serials);
             return SerialDTOs;
         }
@@ -30,7 +30,7 @@ namespace PetCinemaBLL.Services
         public async Task<CreateSerialDTO> AddSerial(CreateSerialDTO serialDTO)
         {
             Serial serial = _mapper.Map<Serial>(serialDTO);
-            Serial serialForMapping = await _serialRepository.AddSerial(serial);
+            Serial serialForMapping = await _serialRepository.Add(serial);
             return _mapper.Map<CreateSerialDTO>(serialForMapping);
         }
         public async Task<IEnumerable<IndexSerialDTO>> GetTopSerialsByRating()

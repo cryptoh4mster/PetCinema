@@ -10,24 +10,12 @@ using System.Threading.Tasks;
 
 namespace PetCinemaDAL.Repositories
 {
-    public class SerialRepository : ISerialRepository
+    public class SerialRepository : GenericRepository<Serial>, ISerialRepository
     {
-        private readonly PetCinemaContext _context;
-        public SerialRepository(PetCinemaContext context)
+        public SerialRepository(PetCinemaContext _context) : base(_context)
         {
-            _context = context;
-        }
-        public async Task<IEnumerable<Serial>> GetSerials()
-        {
-            return await _context.Serials.ToListAsync();
-        }
-        public async Task<Serial> AddSerial(Serial serial)
-        {
-            await _context.Serials.AddAsync(serial);
-            await _context.SaveChangesAsync();
-            return serial;
-        }
 
+        }
         public async Task<IEnumerable<Serial>> GetTopSerialsByRating()
         {
             IEnumerable<Serial> serials = await _context.Serials.ToListAsync();

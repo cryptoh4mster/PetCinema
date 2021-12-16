@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace PetCinemaDAL.Interfaces
 {
-    public interface IMovieRepository
+    public interface IMovieRepository : IGenericRepository<Movie>
     {
-        Task<IEnumerable<Movie>> GetMovies();
-        Task<Movie> AddMovie(Movie movie);
         Task<IEnumerable<Movie>> GetTopMoviesByRating();
     }
 }

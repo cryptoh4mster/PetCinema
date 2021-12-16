@@ -21,7 +21,7 @@ namespace PetCinemaBLL.Services
         }
         public async Task<IEnumerable<IndexMovieDTO>> GetMovies()
         {
-            IEnumerable<Movie> Movies = await _movieRepository.GetMovies();
+            IEnumerable<Movie> Movies = await _movieRepository.GetAll();
             IEnumerable<IndexMovieDTO> MovieDTOs = _mapper.Map<IEnumerable<IndexMovieDTO>>(Movies);
             return MovieDTOs;
         }
@@ -29,7 +29,7 @@ namespace PetCinemaBLL.Services
         public async Task<CreateMovieDTO> AddMovie(CreateMovieDTO movieDTO) 
         {
             Movie movie = _mapper.Map<Movie>(movieDTO);  
-            Movie movieForMapping = await _movieRepository.AddMovie(movie);
+            Movie movieForMapping = await _movieRepository.Add(movie);
             return _mapper.Map<CreateMovieDTO>(movieForMapping);
         }
 

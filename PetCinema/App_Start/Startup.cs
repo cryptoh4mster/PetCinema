@@ -39,7 +39,7 @@ namespace PetCinema
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PetCinema", Version = "v1" });
-            });
+            });           
             services.AddTransient<IMovieRepository, MovieRepository>();
             services.AddTransient<IMovieService, MovieService>();
             services.AddTransient<ISerialRepository, SerialRepository>();
