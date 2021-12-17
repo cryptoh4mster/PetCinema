@@ -26,10 +26,29 @@ namespace PetCinemaBLL.Services
             return MovieDTOs;
         }
 
+        public async Task<IndexMovieDTO> GetMovieById(int id)
+        {
+            Movie movie = await _movieRepository.GetById(id);
+            IndexMovieDTO movieDTO = _mapper.Map<IndexMovieDTO>(movie);
+            return movieDTO;
+        }
+
+        public async Task DeleteMovieById(int id)
+        {
+            await _movieRepository.Delete(id);
+        }
+
         public async Task<CreateMovieDTO> AddMovie(CreateMovieDTO movieDTO) 
         {
             Movie movie = _mapper.Map<Movie>(movieDTO);  
             Movie movieForMapping = await _movieRepository.Add(movie);
+            return _mapper.Map<CreateMovieDTO>(movieForMapping);
+        }
+
+        public async Task<CreateMovieDTO> UpdateMovie(CreateMovieDTO movieDTO)
+        {
+            Movie movie = _mapper.Map<Movie>(movieDTO);
+            Movie movieForMapping = await _movieRepository.Update(movie);
             return _mapper.Map<CreateMovieDTO>(movieForMapping);
         }
 

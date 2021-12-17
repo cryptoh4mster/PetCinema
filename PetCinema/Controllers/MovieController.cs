@@ -23,6 +23,7 @@ namespace PetCinema.Controllers
             _movieService = movieService;
             _mapper = mapper;
         }
+
         [HttpGet]
         [Route("getmovies")]
         public async Task<ActionResult<IEnumerable<IndexMovieViewModel>>> GetMovies()
@@ -31,6 +32,7 @@ namespace PetCinema.Controllers
             IEnumerable<IndexMovieViewModel> movieViewModels = _mapper.Map<IEnumerable<IndexMovieViewModel>>(movieDTOs);
             return Ok(movieViewModels);
         }
+
         [HttpPost]
         public async Task<ActionResult<CreateMovieViewModel>> AddMovie(CreateMovieViewModel movieViewModel)
         {
