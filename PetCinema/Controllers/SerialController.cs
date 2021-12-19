@@ -23,21 +23,47 @@ namespace PetCinemaPL.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        [Route("getserials")]
+        [Route("serials")]
         public async Task<ActionResult<IEnumerable<IndexSerialViewModel>>> GetSerials()
         {
             IEnumerable<IndexSerialDTO> serialDTOs = await _serialService.GetSerials();
             IEnumerable<IndexSerialViewModel> serialViewModels = _mapper.Map<IEnumerable<IndexSerialViewModel>>(serialDTOs);
             return Ok(serialViewModels);
         }
+
+        [HttpGet]
+        [Route("serials/{id}")]
+        public async Task<ActionResult<IndexSerialDTO>> GetSerialById(int id)
+        {
+            IndexSerialDTO serialDTO = await _serialService.GetSerialById(id);
+            IndexSerialViewModel serialViewModel = _mapper.Map<IndexSerialViewModel>(serialDTO);
+            return Ok(serialViewModel);
+        }
+
         [HttpPost]
         public async Task<ActionResult<CreateSerialViewModel>> AddSerial(CreateSerialViewModel serialViewModel)
         {
             CreateSerialDTO serialDTO = _mapper.Map<CreateSerialDTO>(serialViewModel);
             return Ok(await _serialService.AddSerial(serialDTO));
         }
+
+        [HttpDelete]
+        [Route("serials/{id}")]
+        public async Task<ActionResult> DeleteSerialById(int id)
+        {
+            await _serialService.DeleteSerialById(id);
+            return Ok();
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<CreateSerialViewModel>> UpdateSerial(CreateSerialViewModel serialViewModel)
+        {
+            CreateSerialDTO serialDTO = _mapper.Map<CreateSerialDTO>(serialViewModel);
+            return Ok(await _serialService.UpdateSerial(serialDTO));
+        }
+
         [HttpGet]
-        [Route("bestrating")]
+        [Route("serials/top")]
         public async Task<ActionResult<IEnumerable<IndexMovieViewModel>>> GetTopSerialsByRating()
         {
             IEnumerable<IndexSerialDTO> serialDTOs = await _serialService.GetTopSerialsByRating();
