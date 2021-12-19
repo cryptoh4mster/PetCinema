@@ -22,6 +22,9 @@ namespace PetCinemaPL.Controllers
             _serialService = serialService;
             _mapper = mapper;
         }
+
+        //TODO: Везде сделать проверку на ошибки и отправку разных статусных кодов
+
         [HttpGet]
         [Route("serials")]
         public async Task<ActionResult<IEnumerable<IndexSerialViewModel>>> GetSerials()

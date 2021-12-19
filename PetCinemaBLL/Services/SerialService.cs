@@ -44,7 +44,7 @@ namespace PetCinemaBLL.Services
         {
             await _serialRepository.Delete(id);
         }
-        public async Task<CreateSerialDTO> UpdateMovie(CreateSerialDTO serialDTO)
+        public async Task<CreateSerialDTO> UpdateSerial(CreateSerialDTO serialDTO)
         {
             Serial serial = _mapper.Map<Serial>(serialDTO);
             Serial serialForMapping = await _serialRepository.Update(serial);

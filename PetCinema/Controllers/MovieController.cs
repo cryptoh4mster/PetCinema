@@ -66,7 +66,7 @@ namespace PetCinema.Controllers
         }
 
         [HttpGet]
-        [Route("top")]
+        [Route("movies/top")]
         public async Task<ActionResult<IEnumerable<IndexMovieViewModel>>> GetTopMoviesByRating()
         {
             IEnumerable<IndexMovieDTO> movieDTOs = await _movieService.GetTopMoviesByRating();
