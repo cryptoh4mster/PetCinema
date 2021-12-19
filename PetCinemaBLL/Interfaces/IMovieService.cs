@@ -10,8 +10,8 @@ namespace PetCinemaBLL.Interfaces
     public interface IMovieService
     {
         Task<IEnumerable<IndexMovieDTO>> GetMovies();
-        Task<IndexMovieDTO> GetMovieById(int id);
-        Task DeleteMovieById(int id);
+        Task<IndexMovieDTO> GetMovieById(Guid id);
+        Task DeleteMovieById(Guid id);
         Task<CreateMovieDTO> UpdateMovie(CreateMovieDTO movieDTO);
         Task<CreateMovieDTO> AddMovie(CreateMovieDTO movieDTO);
         Task<IEnumerable<IndexMovieDTO>> GetTopMoviesByRating();

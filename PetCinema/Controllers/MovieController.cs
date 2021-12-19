@@ -36,7 +36,7 @@ namespace PetCinema.Controllers
         }
         [HttpGet]
         [Route("movies/{id}")]
-        public async Task<ActionResult<IndexMovieDTO>> GetMovieById(int id)
+        public async Task<ActionResult<IndexMovieDTO>> GetMovieById(Guid id)
         {
             IndexMovieDTO movieDTO = await _movieService.GetMovieById(id);
             IndexMovieViewModel movieViewModel = _mapper.Map<IndexMovieViewModel>(movieDTO);
@@ -52,7 +52,7 @@ namespace PetCinema.Controllers
 
         [HttpDelete]
         [Route("movies/{id}")]
-        public async Task<ActionResult> DeleteMovieById(int id)
+        public async Task<ActionResult> DeleteMovieById(Guid id)
         {
             await _movieService.DeleteMovieById(id);
             return Ok();

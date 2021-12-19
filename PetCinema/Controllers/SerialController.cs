@@ -36,7 +36,7 @@ namespace PetCinemaPL.Controllers
 
         [HttpGet]
         [Route("serials/{id}")]
-        public async Task<ActionResult<IndexSerialDTO>> GetSerialById(int id)
+        public async Task<ActionResult<IndexSerialDTO>> GetSerialById(Guid id)
         {
             IndexSerialDTO serialDTO = await _serialService.GetSerialById(id);
             IndexSerialViewModel serialViewModel = _mapper.Map<IndexSerialViewModel>(serialDTO);
@@ -52,7 +52,7 @@ namespace PetCinemaPL.Controllers
 
         [HttpDelete]
         [Route("serials/{id}")]
-        public async Task<ActionResult> DeleteSerialById(int id)
+        public async Task<ActionResult> DeleteSerialById(Guid id)
         {
             await _serialService.DeleteSerialById(id);
             return Ok();
