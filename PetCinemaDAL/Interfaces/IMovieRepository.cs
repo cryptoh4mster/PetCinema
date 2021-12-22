@@ -9,5 +9,6 @@ namespace PetCinemaDAL.Interfaces
     public interface IMovieRepository : IGenericRepository<Movie>
     {
         Task<IEnumerable<Movie>> GetTopMoviesByRating();
+        Task<IEnumerable<Movie>> GetMoviesBySearchString(string searchString);
     }
 }

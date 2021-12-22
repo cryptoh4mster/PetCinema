@@ -73,5 +73,14 @@ namespace PetCinema.Controllers
             IEnumerable<IndexMovieViewModel> movieViewModels = _mapper.Map<IEnumerable<IndexMovieViewModel>>(movieDTOs);
             return Ok(movieViewModels);
         }
+
+        [HttpGet]
+        [Route("movies/search={searchString}")]
+        public async Task<ActionResult<IEnumerable<IndexMovieViewModel>>> GetMoviesBySearchString(string searchString)
+        {
+            IEnumerable<IndexMovieDTO> movieDTOs = await _movieService.GetMoviesBySearchString(searchString);
+            IEnumerable<IndexMovieViewModel> movieViewModels = _mapper.Map<IEnumerable<IndexMovieViewModel>>(movieDTOs);
+            return Ok(movieViewModels);
+        }
     }
 }

@@ -73,5 +73,14 @@ namespace PetCinemaPL.Controllers
             IEnumerable<IndexSerialViewModel> serialViewModels = _mapper.Map<IEnumerable<IndexSerialViewModel>>(serialDTOs);
             return Ok(serialViewModels);
         }
+
+        [HttpGet]
+        [Route("serials/search={searchString}")]
+        public async Task<ActionResult<IEnumerable<IndexSerialViewModel>>> GetSerialsBySearchString(string searchString)
+        {
+            IEnumerable<IndexSerialDTO> serialDTOs = await _serialService.GetSerialsBySearchString(searchString);
+            IEnumerable<IndexSerialViewModel> serialViewModels = _mapper.Map<IEnumerable<IndexSerialViewModel>>(serialDTOs);
+            return Ok(serialViewModels);
+        }
     }
 }

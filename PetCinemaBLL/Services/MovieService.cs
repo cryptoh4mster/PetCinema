@@ -58,5 +58,12 @@ namespace PetCinemaBLL.Services
             IEnumerable<IndexMovieDTO> MovieDTOs = _mapper.Map<IEnumerable<IndexMovieDTO>>(Movies);
             return MovieDTOs;
         }
+
+        public async Task<IEnumerable<IndexMovieDTO>> GetMoviesBySearchString(string searchString)
+        {
+            IEnumerable<Movie> movies = await _movieRepository.GetMoviesBySearchString(searchString);
+            IEnumerable<IndexMovieDTO> movieDTOs = _mapper.Map<IEnumerable<IndexMovieDTO>>(movies);
+            return movieDTOs;
+        }
     }
 }

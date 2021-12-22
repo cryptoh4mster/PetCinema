@@ -9,8 +9,7 @@ namespace PetCinemaDAL.Interfaces
 {
     public interface ISerialRepository : IGenericRepository<Serial>
     {
-        /*Task<IEnumerable<Serial>> GetSerials();
-        Task<Serial> AddSerial(Serial serial);*/
         Task<IEnumerable<Serial>> GetTopSerialsByRating();
+        Task<IEnumerable<Serial>> GetSerialsBySearchString(string searchString);
     }
 }

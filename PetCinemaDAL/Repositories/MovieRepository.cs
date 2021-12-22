@@ -24,5 +24,12 @@ namespace PetCinemaDAL.Repositories
                          select movie).Take(10);
             return top10;
         }
+
+        public async Task<IEnumerable<Movie>> GetMoviesBySearchString(string searchString)
+        {
+            IEnumerable<Movie> movies = await _context.Movies.ToListAsync();
+            movies = movies.Where(movie => movie.Name.Contains(searchString));
+            return movies;
+        }
     }
 }

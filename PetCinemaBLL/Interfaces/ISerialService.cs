@@ -15,5 +15,6 @@ namespace PetCinemaBLL.Interfaces
         Task DeleteSerialById(Guid id);
         Task<CreateSerialDTO> UpdateSerial(CreateSerialDTO serialDTO);
         Task<IEnumerable<IndexSerialDTO>> GetTopSerialsByRating();
+        Task<IEnumerable<IndexSerialDTO>> GetSerialsBySearchString(string searchString);
     }
 }
