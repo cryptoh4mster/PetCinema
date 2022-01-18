@@ -38,9 +38,16 @@ namespace PetCinemaPL.Controllers
         [Route("serials/{id}")]
         public async Task<ActionResult<IndexSerialDTO>> GetSerialById(Guid id)
         {
-            IndexSerialDTO serialDTO = await _serialService.GetSerialById(id);
-            IndexSerialViewModel serialViewModel = _mapper.Map<IndexSerialViewModel>(serialDTO);
-            return Ok(serialViewModel);
+            try
+            {
+                IndexSerialDTO serialDTO = await _serialService.GetSerialById(id);
+                IndexSerialViewModel serialViewModel = _mapper.Map<IndexSerialViewModel>(serialDTO);
+                return Ok(serialViewModel);
+            }
+            catch
+            {
+                return NotFound("Сериала с таким id не существует");
+            }
         }
 
         [HttpPost]
@@ -54,15 +61,29 @@ namespace PetCinemaPL.Controllers
         [Route("serials/{id}")]
         public async Task<ActionResult> DeleteSerialById(Guid id)
         {
-            await _serialService.DeleteSerialById(id);
-            return Ok();
+            try
+            {
+                await _serialService.DeleteSerialById(id);
+                return Ok();
+            }
+            catch
+            {
+                return NotFound("Сериала с таким id не существует");
+            }
         }
 
         [HttpPut]
         public async Task<ActionResult<CreateSerialViewModel>> UpdateSerial(CreateSerialViewModel serialViewModel)
         {
-            CreateSerialDTO serialDTO = _mapper.Map<CreateSerialDTO>(serialViewModel);
-            return Ok(await _serialService.UpdateSerial(serialDTO));
+            try
+            {
+                CreateSerialDTO serialDTO = _mapper.Map<CreateSerialDTO>(serialViewModel);
+                return Ok(await _serialService.UpdateSerial(serialDTO));
+            }
+            catch
+            {
+                return NotFound("Сущность не найдена");
+            }
         }
 
         [HttpGet]
@@ -74,6 +95,7 @@ namespace PetCinemaPL.Controllers
             return Ok(serialViewModels);
         }
 
+        //Рут сделан неправильно
         [HttpGet]
         [Route("serials/search={searchString}")]
         public async Task<ActionResult<IEnumerable<IndexSerialViewModel>>> GetSerialsBySearchString(string searchString)
